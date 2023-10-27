@@ -1,10 +1,16 @@
 package com.fisibet.gestionUsuarios.infraestructure.out.persistence.CuentaUsuarioPersistence;
 
 
+import com.fisibet.gestionUsuarios.infraestructure.out.persistence.BilleteraVirtualPersistence.BilleteraVirtualEntity;
+import com.fisibet.gestionUsuarios.infraestructure.out.persistence.TarjetaPersistence.TarjetaEntity;
+import com.fisibet.gestionUsuarios.infraestructure.out.persistence.TipoUsuarioPersistence.TipoUsuarioEntity;
+import com.fisibet.gestionUsuarios.infraestructure.out.persistence.UsuarioPersistence.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,12 +32,22 @@ public class CuentaUsuarioEntity {
 
     private String updated;
 
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private UsuarioEntity usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idTipoUsuario")
+    private TipoUsuarioEntity tipoUsuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idBilleterVirtual")
+    private BilleteraVirtualEntity billeteraVirtual;
+
+    @OneToMany(mappedBy = "cuentaUsuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TarjetaEntity> tarjetas;
+
     //@OneToOne
     //private Usuario usuario;
 
-    public CuentaUsuarioEntity(int id, String correo, String contra){
-        this.id = id;
-        this.correo = correo;
-        this.contrasenia = contra;
-    }
 }

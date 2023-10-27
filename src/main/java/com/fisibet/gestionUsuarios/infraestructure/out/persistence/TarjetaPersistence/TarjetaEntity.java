@@ -1,5 +1,6 @@
 package com.fisibet.gestionUsuarios.infraestructure.out.persistence.TarjetaPersistence;
 
+import com.fisibet.gestionUsuarios.infraestructure.out.persistence.CuentaUsuarioPersistence.CuentaUsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,8 @@ public class TarjetaEntity {
     private String registered;
 
     private String updated;
+
+    @ManyToOne
+    @JoinColumn(name ="id")
+    private CuentaUsuarioEntity cuentaUsuario;
 }

@@ -20,19 +20,18 @@ public class CuentaUsuario
     //relationship with another tables
 
     // USUARIO
-    Usuario usuario;
 
-    //int idUsuario;
+    int idUsuario;
 
-    //int idTipoUsuario;
+    int idTipoUsuario;
 
     //BILLETERA
-    BilleteraVirtual billetera;
-    //int idBilleteraVirtual;
+    //BilleteraVirtual billetera;
+    int idBilleteraVirtual;
 
     //TARJETA
-    List<Tarjeta> tarjetas;
-    List<Integer> listaIdsTarjetas;
+    //List<Tarjeta> tarjetas;
+    //List<Integer> listaIdsTarjetas;
 
 
     public void registrarUsario(String corr, String contra){

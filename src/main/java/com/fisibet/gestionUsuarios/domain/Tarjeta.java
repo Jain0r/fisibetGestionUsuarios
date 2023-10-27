@@ -15,4 +15,7 @@ public class Tarjeta {
     String registered;
 
     String updated;
+
+    //referencia a CuentaUsuario -> id
+    int id;
 }
