@@ -22,4 +22,5 @@ public class BilleteraVirtualController {
     public void registrarBilltera(@RequestBody BilleteraVirtual billeteraVirtual){
         registrarBilleteraVirtualPort.registrarBilleteraVirtual(billeteraVirtual);
     }
+
 }

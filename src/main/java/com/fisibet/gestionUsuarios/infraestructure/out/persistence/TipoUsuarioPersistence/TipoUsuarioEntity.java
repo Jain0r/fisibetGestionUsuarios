@@ -20,4 +20,8 @@ public class TipoUsuarioEntity {
     private String registered;
 
     private String updated;
+
+    public TipoUsuarioEntity(int id){
+        this.id = id;
+    }
 }

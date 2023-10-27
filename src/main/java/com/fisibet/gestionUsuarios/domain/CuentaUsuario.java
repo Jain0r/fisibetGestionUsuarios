@@ -41,6 +41,10 @@ public class CuentaUsuario
 
     }
 
+    public void actualizarIdUsuarioXcorreo(int iduser){
+        this.idUsuario =iduser;
+    }
+
     public void registrarTarjeta(Tarjeta nuevaTarjeta){
 
     }

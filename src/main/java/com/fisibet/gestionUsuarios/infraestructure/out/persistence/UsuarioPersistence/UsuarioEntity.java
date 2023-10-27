@@ -23,4 +23,8 @@ public class UsuarioEntity {
     private String registed;
 
     private String updated;
+
+    public UsuarioEntity(int id){
+        this.idUsuario = id;
+    }
 }

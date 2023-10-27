@@ -47,7 +47,12 @@ public class CuentaUsuarioEntity {
     @OneToMany(mappedBy = "cuentaUsuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TarjetaEntity> tarjetas;
 
+    public CuentaUsuarioEntity(int id){
+        this.id = id;
+    }
+
+}
     //@OneToOne
     //private Usuario usuario;
 
-}
+

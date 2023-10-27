@@ -1,6 +1,8 @@
 package com.fisibet.gestionUsuarios.application.service;
 
 import com.fisibet.gestionUsuarios.application.common.UseCase;
+import com.fisibet.gestionUsuarios.application.port.in.CuentaUsuario.ActualizarCuentaUsuarioCommand;
+import com.fisibet.gestionUsuarios.application.port.in.CuentaUsuario.ActualizarCuentaUsuarioPort;
 import com.fisibet.gestionUsuarios.application.port.in.CuentaUsuario.RegistrarCuentaUsuarioCommand;
 import com.fisibet.gestionUsuarios.application.port.in.CuentaUsuario.RegistrarCuentaUsuarioPort;
 import com.fisibet.gestionUsuarios.application.port.out.CuentaUsuario.LoadCuentaUsuarioPort;
@@ -10,7 +12,7 @@ import com.fisibet.gestionUsuarios.domain.CuentaUsuario;
 import jakarta.transaction.Transactional;
 
 @UseCase
-public class RegistrarCuentaUsuarioService implements RegistrarCuentaUsuarioPort {
+public class RegistrarCuentaUsuarioService implements RegistrarCuentaUsuarioPort, ActualizarCuentaUsuarioPort {
     private final LoadCuentaUsuarioPort loadCuentaUsuarioPort;
     private final UpdateCuentaUsuarioPort updateCuentaUsuarioPort;
 
@@ -22,10 +24,6 @@ public class RegistrarCuentaUsuarioService implements RegistrarCuentaUsuarioPort
         this.saveCuentaUsuarioPort = saveCuentaUsuarioPort;
     }
 
-    @Override
-    public boolean actualizarCuentaUsuario(RegistrarCuentaUsuarioCommand registrarCuentaUsuarioCommand) {
-        return false;
-    }
 
     @Transactional
     @Override
@@ -43,8 +41,27 @@ public class RegistrarCuentaUsuarioService implements RegistrarCuentaUsuarioPort
 
             //updateCuentaUsuarioPort.updateCuentaUsuario(cuentaUsuario);
         } catch (Exception e){
-            System.out.println("Error en Service: " + e.getMessage());
+            System.out.println("Error en RegistrarCuentaUsuarioService.registrarCuentaUsuario: " + e.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public void actualizarCuentaUsuario(ActualizarCuentaUsuarioCommand command) {
+
+        try{
+            CuentaUsuario cuentaUsuario = loadCuentaUsuarioPort.loadByCorreo(command.getCorreoABuscar());
+
+            if(cuentaUsuario == null){
+                throw new RuntimeException("no se encontro correo de cuenta");
+            }
+            cuentaUsuario.actualizarIdUsuarioXcorreo(command.getNuevoIdUsuario());
+
+            updateCuentaUsuarioPort.updateCuentaUsuario(cuentaUsuario);
+
+        } catch (Exception e){
+            System.out.println("Error en RegistrarCuentaUsuarioService.actualizarCuentaUsuario: " + e.getMessage());
+        }
+
     }
 }

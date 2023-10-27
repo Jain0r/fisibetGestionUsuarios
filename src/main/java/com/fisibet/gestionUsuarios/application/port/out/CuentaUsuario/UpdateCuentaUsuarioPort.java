@@ -6,5 +6,4 @@ public interface UpdateCuentaUsuarioPort {
 
     void updateCuentaUsuario(CuentaUsuario cuentaUsuario);
 
-
 }

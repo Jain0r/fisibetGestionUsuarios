@@ -22,4 +22,8 @@ public class BilleteraVirtualEntity {
 
     private String updated;
 
+    public BilleteraVirtualEntity(int id){
+        this.idBilleteraVirtual = id;
+    }
+
 }

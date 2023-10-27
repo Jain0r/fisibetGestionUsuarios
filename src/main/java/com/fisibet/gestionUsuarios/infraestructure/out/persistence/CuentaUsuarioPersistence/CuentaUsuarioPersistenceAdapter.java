@@ -24,9 +24,7 @@ public class CuentaUsuarioPersistenceAdapter implements LoadCuentaUsuarioPort, U
         } else {
 
         }
-
         return CuentaUsuarioMapper.entityToDomain(entity);
-
     }
 
     @Override
