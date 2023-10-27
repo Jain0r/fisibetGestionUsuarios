@@ -34,7 +34,7 @@ public class Extra implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        this.extra.save(new CuentaUsuarioEntity(1, "correo@prueba.com", "contraseña", "21/10/2023", "21/10/2023"));
+        //this.extra.save(new CuentaUsuarioEntity(1, "correo@prueba.com", "contraseña", "21/10/2023", "21/10/2023"));
         this.extra1.save(new TipoUsuarioEntity(1, "Administrador", "21/10/2023", "21/10/2023"));
         this.extra3.save(new BilleteraVirtualEntity());
         this.extra4.save(new BonoEntity());
